@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/easychat?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123
+
+#禁用模板引擎(否则页面会被缓存)---》修改页面后，Ctrl+F9重新编译即可生效 --》便于开发
+  thymeleaf:
+    cache: false
+
+
+#设置文件上传
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 10MB
+#配置虚拟路径，供外部使用
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:/home/image/
+#/home/images/
+
+#日志打印
+logging:
+  level:
+    com.magee.easychat.mapper : debug
+
+#mybatis相关配置
+mybatis:
+  configuration:
+    #开启驼峰法则
+    map-underscore-to-camel-case: true
+  configuration-properties:
+
+server:
+  port: 8081
+
